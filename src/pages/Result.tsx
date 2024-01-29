@@ -222,12 +222,6 @@ type Props = OwnProps
               <Typography textAlign="left" fontSize='48px'>順位…</Typography>
               <Typography textAlign="right" color= "#af011c" fontSize='48px'>{props.score?.ranking}位/{props.score?.population}人</Typography>
           </CenterBox>
-          <CenterBox width="30%" minWidth="240px" marginTop= "10px" display="flex" flexDirection= "row" justifyContent= "space-between">
-            <Typography marginTop="auto" marginBottom="auto" fontSize='24px'>結果をツイート</Typography>
-              <TwitterShareButton url={"https://omikuji-frontend.herokuapp.com"} title={"あなたの今日の運勢は、"+props.score?.totalScore+"/300点("+props.score?.ranking+"位/"+props.score?.population+"人)です"}>
-                <TwitterIcon size={48} borderRadius={20} />
-              </TwitterShareButton>
-          </CenterBox>
           </ThemeProvider>
           <CenterBox marginTop= "30px">
             <ReDrawButtons/>

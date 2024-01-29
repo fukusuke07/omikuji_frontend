@@ -11,6 +11,7 @@ export const CenterWashi = styled(Box)(({ theme }) => ({
     marginRight:"auto",
     width:"75%",
     minWidth:"348px",
-    minHeight: "100%",
-    backgroundImage:`url(${Washi})`
+    minHeight: "100vh",
+    backgroundImage:`url(${Washi})`,
+    flexGrow: "1"
 }));

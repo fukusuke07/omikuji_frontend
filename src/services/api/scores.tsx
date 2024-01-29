@@ -3,7 +3,6 @@ import { Score } from "interfaces/index"
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
-// 全てのいいね情報（自分から、相手から両方）を取得
 export const requestFetchScoreApi = async(id:number) => {
   return client
   .get(`scores/${id}`, { headers: {
@@ -23,7 +22,6 @@ export const requestFetchScoreApi = async(id:number) => {
 
 }
 
-// いいねを作成
 export const requestCreateScoreApi = async(score:Score) => {
 
   /*var competitionScore = Math.floor(Math.random() * 100);

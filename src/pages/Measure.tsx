@@ -6,6 +6,9 @@ import { from } from 'rxjs';
 
 import { Box,Typography, CardMedia } from '@mui/material';
 
+import { CenterWashi } from "../components/CenterWashi"
+import { CenterBox } from "../components/CenterBox"
+
 import Miko from 'assets/images/jinja_miko.png';
 import Fukusuke from 'assets/images/fukusukeningyou.png';
 import Binbougami from 'assets/images/youkai_binbougami.png';
@@ -100,33 +103,16 @@ type Props = OwnProps
    }, [])
 
     return (
-      <Box style={{
-        display:"flex",
-        flexDirection:"column",
-        justifyContent: "space-around",
-        padding: "-30px 0",
-        marginLeft:"auto",
-        marginRight:"auto",
-        width:"500px",
-        height:"600px",
-        backgroundImage:`url(${Washi})`
-      }}>
-      <Box style={{
-        marginLeft:"auto",
-        marginRight:"auto",
-        textAlign: "center",
-      }}>
+      <CenterWashi>
+      <CenterBox marginTop= "40px" >
       <Typography style={{
         fontFamily:'Kouzan',
         fontSize:'42px',
       }}>
         今日の運勢は…
         </Typography>
-        </Box>
-        <Box style={{
-        marginLeft:"auto",
-        marginRight:"auto",
-      }}>
+        </CenterBox>
+        <CenterBox marginTop= "60px" >
         <Box component="img" src={loadingImg} alt="omikuji" sx={{
           width:"200px" ,
           display: "block",
@@ -143,8 +129,8 @@ type Props = OwnProps
         },
       }}>
         </Box>
-        </Box>
-        </Box>
+        </CenterBox>
+        </CenterWashi>
 
 );
   }
