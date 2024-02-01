@@ -69,6 +69,8 @@ const ReDrawAttention = () => {
 
     let unmounted = false;
 
+    let signIn = false;
+
     console.log(signInData)
     
     const f = async () => {
@@ -82,6 +84,10 @@ const ReDrawAttention = () => {
               signInData: signInData,
               promise: { resolve, reject }
             });
+          }).then(result => {
+
+            signIn = true;
+
           }).catch(error =>{
             console.log(error[0])
             if(error[0] == 'ConnectionError'){
@@ -96,7 +102,7 @@ const ReDrawAttention = () => {
 
         }
 
-        if(props.user){
+        if(signIn){
 
           await new Promise((resolve, reject) => {
             props.fetchScore({
