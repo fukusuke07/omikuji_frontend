@@ -115,7 +115,7 @@ export default function AppPageForm(props: MappedProps) {
               <SignUp user={props.user} score={props.score} loading={props.loading} signUp={props.actions.signUpOperation} fetchUser={props.actions.fetchUserOperation}/>
             </Route>
             <Route exact path="/signin">
-              <SignIn user={props.user} score={props.score} loading={props.loading} signIn={props.actions.signInOperation} fetchUser={props.actions.fetchUserOperation}/>
+              <SignIn user={props.user} score={props.score} loading={props.loading} signIn={props.actions.signInOperation} fetchUser={props.actions.fetchUserOperation} fetchScore={props.actions.fetchScoreOperation}/>
             </Route>
             <Route exact path="/signout">
               <SignOutPage clearState={props.actions.clearStateOperation}/>

@@ -396,7 +396,7 @@ function* updateScoreSaga(action: FSA<PayloadOf<typeof updateScoreOperation>>) {
 
     const { state } = yield select()
 
-    if(state.score && state.score.userId > 0 && state.score.drawCount < 2 && state.user){
+    if(state.score && state.score.drawCount < 2 && state.user){
 
         var competitionScore = Math.floor(Math.random() * 100);
         var loveScore = Math.floor(Math.random() * 100);

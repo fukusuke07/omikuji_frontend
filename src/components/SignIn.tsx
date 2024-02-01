@@ -21,6 +21,7 @@ interface OwnProps {
   score: Score | null,
   loading: boolean
   fetchUser: Function
+  fetchScore: Function
   signIn: Function
 }
 
@@ -81,12 +82,6 @@ const ReDrawAttention = () => {
               signInData: signInData,
               promise: { resolve, reject }
             });
-          }).then(result => {
-            if(props.score && isScoreInvalid(props.score.date)){
-              history.push("/Measure")
-            }else{
-              history.push("/")
-            }
           }).catch(error =>{
             console.log(error[0])
             if(error[0] == 'ConnectionError'){
@@ -97,6 +92,26 @@ const ReDrawAttention = () => {
               setAlertMessageOpen(true)
             }
             
+          })
+
+        }
+
+        if(props.user){
+
+          await new Promise((resolve, reject) => {
+            props.fetchScore({
+            delay: 1500,
+            promise: { resolve, reject }
+          });
+          }).then(result => {
+            
+            if(props.score && isScoreInvalid(props.score.date)){
+              history.push("/Measure")
+            }else{
+              history.push("/")
+            }
+          }).catch(error => {
+            history.push("/Error");
           })
 
         }
