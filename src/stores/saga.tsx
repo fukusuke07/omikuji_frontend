@@ -51,7 +51,7 @@ function* signInSaga(action: FSA<PayloadOf<typeof signInOperation>>) {
         const result = { quote: createUserFromResponseData(res.data.user) };
         promise && promise.resolve(result);
 
-        /*if(getCookie("_score_data")){
+        if(getCookie("_score_data")){
 
             console.log("score!!")
             const score = decodeCookieScoreData(getCookie("_score_data") as string)
@@ -59,7 +59,7 @@ function* signInSaga(action: FSA<PayloadOf<typeof signInOperation>>) {
             if(isScoreInvalid(score.date)){
                 AddUserIDToScore(score)
             }
-        }*/
+        }
 
       }
       else if( res && res.data.status != 200 ){
@@ -94,14 +94,14 @@ function* signInSaga(action: FSA<PayloadOf<typeof signInOperation>>) {
             promise && promise.resolve(result);
             yield put(TextInputActions.signUp.done({ result: createUserFromResponseData(res.data.data) }))
 
-            /*if(getCookie("_score_data")){
+            if(getCookie("_score_data")){
 
                 const score = decodeCookieScoreData(getCookie("_score_data") as string)
         
                 if(isScoreInvalid(score.date)){
                     AddUserIDToScore(score)
                 }
-            }*/
+            }
           }
           else if( res && res.data.status != "success" ){
 
