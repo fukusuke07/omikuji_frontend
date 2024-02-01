@@ -12,6 +12,8 @@ export const requestFetchScoreApi = async(id:number) => {
   }})
   .then((res) => {
 
+    console.log(res)
+
     return {res}
   })
   .catch((error) => {
@@ -41,10 +43,12 @@ export const requestCreateScoreApi = async(score:Score) => {
   }*/
 
   console.log("createscore")
-  console.log(score)
+  
 
   return client.post("scores", score)
   .then((res) => {
+
+    console.log(res)
 
     return {res}
   })
@@ -66,6 +70,8 @@ export const requestUpdateScoreApi= async(score:Score) => {
     "uid": getCookie("_uid")
   }} )
   .then((res) => {
+
+    console.log(res)
 
     return {res}
   })
