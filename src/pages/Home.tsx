@@ -47,6 +47,28 @@ type Props = OwnProps
   
   }
 
+  useEffect(() => {
+
+    let unmounted = false
+    const f = async () => {
+      if(!unmounted){
+        if(!props.score){
+          await new Promise((resolve, reject) => {
+            props.fetchScore({
+            delay: 1500,
+            promise: { resolve, reject }
+          });
+          }).catch(error => {
+            history.push("/Error");
+          })
+            }
+    }
+  };
+  f();
+  return ()=>{ unmounted = true; };
+ }, [])
+
+
     useEffect(() =>{
       if(props.score && isScoreInvalid(props.score.date)){
         history.push("/Result");
