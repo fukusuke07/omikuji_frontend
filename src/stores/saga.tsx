@@ -297,43 +297,40 @@ function* fetchScoreSaga(action: FSA<PayloadOf<typeof fetchScoreOperation>>) {
         if(!score || !isScoreInvalid(score.date)){
             score = null
         }else{
-
-            if(state.user && state.user.id != score.userId){
-
+            
+            if(state.user && score.userId != state.user.id){
                 const {res,error} = yield call(requestFetchScoreApi, state.user.id as number)
   
                 if (res && res.data.status == 200) {
-
+        
                     setCookie("_score_data", JSON.stringify(res.data), { expires: 5/1440 })
-
+        
                     score = createScoreFromResponseData(res.data)
+        
+                    const result = { quote: score };
+                    promise && promise.resolve(result);
+                    yield put(TextInputActions.fetchScore.done({ result: score }))
+        
+                    
+                }else if(res && res.data.status != 200){
 
-                    console.log("successFetchScoreFromCookie")
+                    score.userId = state.user.id
                     const result = { quote: score }
                     promise && promise.resolve(result)
                     yield put(TextInputActions.fetchScore.done({ result: score }))
-
-
-                }else if(res && res.data.status != 200){
-
-                    score = null
-                    promise && promise.resolve({ quote: score });
-                    yield put(TextInputActions.fetchScore.failed({ error: res.data.message }))
-
+        
                 } else {
-
+        
                     score = null
                     promise && promise.reject( ["ConnectionError"] );
                     yield put(TextInputActions.fetchScore.failed({ error:new Error("error") }))
                 }
-
             }else{
 
                 console.log("successFetchScoreFromCookie")
                 const result = { quote: score }
                 promise && promise.resolve(result)
                 yield put(TextInputActions.fetchScore.done({ result: score }))
-
             }
             
         }
@@ -353,6 +350,7 @@ function* fetchScoreSaga(action: FSA<PayloadOf<typeof fetchScoreOperation>>) {
             promise && promise.resolve(result);
             yield put(TextInputActions.fetchScore.done({ result: score }))
 
+            
         }else if(res && res.data.status != 200){
 
             score = null
