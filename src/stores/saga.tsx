@@ -430,6 +430,9 @@ function* updateScoreSaga(action: FSA<PayloadOf<typeof updateScoreOperation>>) {
 
     if(state.score && state.score.drawCount < 2 && state.user){
 
+        console.log("update");
+        console.log(state.score);
+
         var competitionScore = Math.floor(Math.random() * 100);
         var loveScore = Math.floor(Math.random() * 100);
         var moneyScore = Math.floor(Math.random() * 100);
