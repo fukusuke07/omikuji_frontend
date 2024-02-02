@@ -297,42 +297,12 @@ function* fetchScoreSaga(action: FSA<PayloadOf<typeof fetchScoreOperation>>) {
         if(!score || !isScoreInvalid(score.date)){
             score = null
         }else{
-            
-            if(state.user && score.userId != state.user.id){
-                const {res,error} = yield call(requestFetchScoreApi, state.user.id as number)
-  
-                if (res && res.data.status == 200) {
-        
-                    setCookie("_score_data", JSON.stringify(res.data), { expires: 5/1440 })
-        
-                    score = createScoreFromResponseData(res.data)
-        
-                    const result = { quote: score };
-                    promise && promise.resolve(result);
-                    yield put(TextInputActions.fetchScore.done({ result: score }))
-        
-                    
-                }else if(res && res.data.status != 200){
 
-                    score.userId = state.user.id
-                    const result = { quote: score }
-                    promise && promise.resolve(result)
-                    yield put(TextInputActions.fetchScore.done({ result: score }))
-        
-                } else {
-        
-                    score = null
-                    promise && promise.reject( ["ConnectionError"] );
-                    yield put(TextInputActions.fetchScore.failed({ error:new Error("error") }))
-                }
-            }else{
-
-                console.log("successFetchScoreFromCookie")
-                const result = { quote: score }
-                promise && promise.resolve(result)
-                yield put(TextInputActions.fetchScore.done({ result: score }))
-            }
-            
+            console.log("successFetchScoreFromCookie")
+            const result = { quote: score }
+            promise && promise.resolve(result)
+            yield put(TextInputActions.fetchScore.done({ result: score }))
+ 
         }
     }
 
@@ -427,6 +397,18 @@ function* updateScoreSaga(action: FSA<PayloadOf<typeof updateScoreOperation>>) {
     yield put(TextInputActions.updateScore.started())
 
     const { state } = yield select()
+
+    if(state.score && state.user && state.score.userId != state.user.id){
+        const {res,error} = yield call(requestFetchScoreApi, state.user.id as number)
+
+        if (res && res.data.status == 200) {
+
+            setCookie("_score_data", JSON.stringify(res.data), { expires: 5/1440 })
+
+            state.score = createScoreFromResponseData(res.data)
+
+        }
+    }
 
     if(state.score && state.score.drawCount < 2 && state.user){
 
