@@ -21,10 +21,6 @@ import { CenterList } from "../components/CenterList";
 
 import { Score, User } from "interfaces/index"
 
-import { TwitterShareButton, TwitterIcon} from 'react-share'
-
-import AlertMessage from "components/AlertMessage"
-
 import { Box, Typography, ThemeProvider } from '@mui/material';
 
 interface OwnProps {

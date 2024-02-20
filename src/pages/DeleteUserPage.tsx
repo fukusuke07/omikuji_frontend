@@ -31,7 +31,6 @@ import Washi from 'assets/images/japanese-paper_00372.png'
 
             await new Promise((resolve) => {
                 props.clearState({
-                delay: 1500,
                 promise: { resolve }
               });
             })

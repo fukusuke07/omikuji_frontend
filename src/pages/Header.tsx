@@ -33,7 +33,6 @@ export default function ButtonAppBar(props:Props) {
 
        await new Promise((resolve, reject) => {
         props.signOut({
-        delay: 1500,
         promise: { resolve, reject }
       });
     }).then(result => {

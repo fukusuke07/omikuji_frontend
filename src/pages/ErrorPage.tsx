@@ -17,40 +17,6 @@ import Washi from 'assets/images/japanese-paper_00372.png'
   
   export default function ErrorPage(props:Props){
 
-    const history = useHistory();
-
-    /*useEffect(() => {
-
-        let unmounted = false;
-  
-        var timeout:NodeJS.Timeout
-  
-        const f = async () => {
-
-            await new Promise((resolve) => {
-                props.clearState({
-                delay: 1500,
-                promise: { resolve }
-              });
-            })
-
-            const subscription = from(
-                new Promise(resolve => {
-                timeout = setTimeout(() => {
-                resolve("")
-            }, 2500)
-            }).then(()=>{
-                history.push("/")
-            })
-            ).subscribe()
-      };
-      f();
-      return ()=>{ 
-        unmounted = true
-        clearTimeout(timeout)
-      };
-     }, [])*/
-
     return (
         <>
         <Box style={{

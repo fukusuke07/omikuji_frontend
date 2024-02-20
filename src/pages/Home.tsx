@@ -13,7 +13,7 @@ import AlertMessage from "components/AlertMessage"
 import { CenterWashi } from "../components/CenterWashi"
 import { CenterBox } from "../components/CenterBox"
 
-import { Box, Typography, ThemeProvider, CssBaseline } from '@mui/material';
+import { Typography, ThemeProvider } from '@mui/material';
 
 import { fontTheme } from '../assets/Themes/FontTheme';
 
@@ -47,14 +47,10 @@ type Props = OwnProps
   
   }
 
-
     useEffect(() =>{
       if(props.score && isScoreInvalid(props.score.date)){
         history.push("/Result");
-    }else{
-      console.log("out")
     }
-  
     }, [props.score])
 
     useEffect(() => {
@@ -65,7 +61,6 @@ type Props = OwnProps
 
           await new Promise<{ quote: Score | null }>((resolve, reject) => {
           props.fetchScore({
-          delay: 1500,
           promise: { resolve, reject }
         });
       }).then(result => {
@@ -91,7 +86,6 @@ type Props = OwnProps
 
     return (
       <>
-      
         <CenterWashi >
           <CenterBox>
             <ThemeProvider theme={fontTheme}>
@@ -135,8 +129,7 @@ type Props = OwnProps
           message={errorMessages as string[]}
         />
       
-      </>
-        
+      </>    
 );
 
   }

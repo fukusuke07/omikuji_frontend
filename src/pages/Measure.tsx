@@ -68,11 +68,9 @@ type Props = OwnProps
               resolve("")
           }, 3000)
           }).then(()=>{
-            console.log("caliculate")
             if(!props.score){
               new Promise<{ quote: Score | null }>((resolve, reject) => {
                 props.createScore({
-                delay: 1500,
                 promise: { resolve, reject }
               })
             }).then(result => {
@@ -83,7 +81,6 @@ type Props = OwnProps
             }else{
               new Promise<{ quote: Score | null }>((resolve, reject) => {
                 props.updateScore({
-                delay: 1500,
                 promise: { resolve, reject }
               });
             }).then(result => {

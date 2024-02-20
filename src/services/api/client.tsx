@@ -1,5 +1,6 @@
 import applyCaseMiddleware from "axios-case-converter"
 import axios from "axios"
+import { timeout } from "rxjs"
 
 // applyCaseMiddleware:
 // axiosで受け取ったレスポンスの値をスネークケース→キャメルケースに変換
@@ -11,7 +12,8 @@ const options = {
 }
 
 const client = applyCaseMiddleware(axios.create({
-  baseURL: process.env.REACT_APP_SERVER_URL
+  baseURL: process.env.REACT_APP_SERVER_URL,
+  timeout: 3000
 }), options)
 
 export default client

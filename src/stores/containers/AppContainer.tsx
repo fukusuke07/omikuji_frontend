@@ -47,16 +47,6 @@ function mapStateToProps (appState: AppState) {
 
 function mapDispatchToProps (dispatch: Dispatch) {
 
-    /*return {
-        handleOnSignIn: (value:SignInData) => { dispatch(signInOperation(value)) },
-        handleOnSignUp: (value:SignUpData) => { dispatch(signUpOperation(value)) },
-        handleOnSignOut: () => { dispatch(signOutOperation()) },
-        handleOnFetchUser: () => { dispatch(fetchUserOperation()) },
-        handleOnFetchScore: () => { dispatch(fetchScoreOperation()) },
-        handleOnCreateScore: () => { dispatch(createScoreOperation()) },
-        handleOnUpdateScore: () => { dispatch(updateScoreOperation()) },
-    
-    }*/
     return{
         actions:bindActionCreators({
             signInOperation,
@@ -73,8 +63,7 @@ function mapDispatchToProps (dispatch: Dispatch) {
         )
  
     }
-
-    
+  
 }
 
 export type MappedProps = ReturnType<typeof mapStateToProps> &

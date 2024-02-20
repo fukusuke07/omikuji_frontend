@@ -12,13 +12,10 @@ export const requestFetchScoreApi = async(id:number) => {
   }})
   .then((res) => {
 
-    console.log(res)
-
     return {res}
   })
   .catch((error) => {
-  
-    console.log(error)
+
     return {error}
   })
 
@@ -26,29 +23,8 @@ export const requestFetchScoreApi = async(id:number) => {
 
 export const requestCreateScoreApi = async(score:Score) => {
 
-  /*var competitionScore = Math.floor(Math.random() * 100);
-  var loveScore = Math.floor(Math.random() * 100);
-  var moneyScore = Math.floor(Math.random() * 100);
-  var totalScore = competitionScore+loveScore+moneyScore;
-
-  console.log(id)
-  const score: Score ={
-    userId: id,
-    totalScore: totalScore,
-    drawCount: 0,
-    competitionScore: competitionScore,
-    loveScore: loveScore,
-    moneyScore: moneyScore,
-    date: ""
-  }*/
-
-  console.log("createscore")
-  
-
   return client.post("scores", score)
   .then((res) => {
-
-    console.log(res)
 
     return {res}
   })
@@ -71,8 +47,6 @@ export const requestUpdateScoreApi= async(score:Score) => {
   }} )
   .then((res) => {
 
-    console.log(res)
-
     return {res}
   })
   .catch((error) => {
@@ -84,35 +58,3 @@ export const requestUpdateScoreApi= async(score:Score) => {
     return  {error} 
   })
 }
-
-/*const CreateResponseScoreData = (data: any) =>{
-
-  console.log(data)
-  console.log(data.score.id)
-  const score: Score ={
-    id: data.score.id,
-    userId: data.score.userId,
-    totalScore: data.score.totalScore,
-    drawCount: data.score.drawCount + 1,
-    competitionScore: data.score.competitionScore,
-    loveScore: data.score.loveScore,
-    moneyScore: data.score.moneyScore,
-    population: data.population,
-    ranking: data.ranking,
-    date: data.date
-  }
-
-  const response: ApiResponseScoreData = {
-    score:score,
-    status: data.status
-  }
-
-  console.log(response)
-
-  console.log("sss")
-
-  return response
-
-}*/
-
- 

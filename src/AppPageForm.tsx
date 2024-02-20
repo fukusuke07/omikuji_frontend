@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { useHistory } from "react-router-dom"
 
@@ -49,7 +49,6 @@ export default function AppPageForm(props: MappedProps) {
         if(!props.user){
           await new Promise((resolve, reject) => {
             props.actions.fetchUserOperation({
-            delay: 1500,
             promise: { resolve, reject }
           });
           }).catch(error => {
@@ -60,37 +59,17 @@ export default function AppPageForm(props: MappedProps) {
         if(!props.score){
           await new Promise((resolve, reject) => {
             props.actions.fetchScoreOperation({
-            delay: 1500,
             promise: { resolve, reject }
           });
           }).catch(error => {
             history.push("/Error");
           })
-            }
+        }
     }
   };
   f();
   return ()=>{ unmounted = true; };
  }, [])
-
-
-  /*const Private = ({ children }: { children: React.ReactElement }) => {
-    if (!props.loading) {
-      if (props.user) {
-
-        console.log("User")
-        return children
-      } else {
-
-        console.log("Pls SignIn")
-        return <Redirect to="/signin" />
-      }
-    } else {
-
-      console.log("Is Loading")
-      return <></>
-    }
-  }*/
 
   return (
     <Router>

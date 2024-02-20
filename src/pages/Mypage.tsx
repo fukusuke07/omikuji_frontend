@@ -62,7 +62,6 @@ export default function Home(props:Props) {
 
         await new Promise((resolve, reject) => {
         props.updateUser({
-        delay: 1500,
         updateUserFormData: updateUserFormData,
         promise: { resolve, reject }
       });
@@ -87,7 +86,6 @@ export default function Home(props:Props) {
       if(!unmounted && execDeleteUser > 0){
         await new Promise((resolve, reject) => {
         props.deleteUser({
-        delay: 1500,
         promise: { resolve, reject }
       });
     }).then(result => {
@@ -154,19 +152,6 @@ export default function Home(props:Props) {
 
     setUserFormData(createFormData())
   }
-
-  /*<Grid container justify="flex-end">
-                  <Grid item>
-                    <IconButton
-                      onClick={() => setEditFormOpen(true)}
-                    >
-                      <SettingsIcon
-                        color="action"
-                        fontSize="small"
-                      />
-                    </IconButton>
-                  </Grid>
-                </Grid>*/
 
   return (
     <>

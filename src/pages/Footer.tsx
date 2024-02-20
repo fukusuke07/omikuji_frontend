@@ -72,7 +72,7 @@ export default function Footer() {
               text-transform= "none"
               onClick={linkToOmikuji}
             >
-              © 2023 運勢闘技場
+              © 2024 運勢闘技場
             </Button>
       </ButtonGroup>
   </Box>;

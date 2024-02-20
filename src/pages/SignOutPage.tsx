@@ -62,7 +62,6 @@ import { CenterList } from "../components/CenterList";
 
             await new Promise((resolve) => {
                 props.clearState({
-                delay: 1500,
                 promise: { resolve }
               });
             })

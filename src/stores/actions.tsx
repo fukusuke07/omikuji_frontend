@@ -3,38 +3,12 @@ import { State } from './reducer'
 import { SignInData, SignUpData, UpdateUserFormData, User } from "interfaces/index"
 import { Score } from "interfaces/index"
 
-/*export const START_LOADING = 'START_LOADING'
-export const FINISH_LOADING = 'FINISH_LOADING'
-
-export const FETCH_USER = 'FETCH_USER'
-export const SUCCESS_FETCH_USER_API = 'SUCCESS_FETCH_USER_API'
-export const FAIL_FETCH_USER_API = 'FAIL_FETCH_USER_API'
-
-export const SEARCH_SCORE = 'SEARCH_SCORE'
-export const SUCCESS_SEARCH_SCORE_API = 'SUCCESS_SEARCH_SCORE_API'
-export const FAIL_SEARCH_SCORE_API = 'FAIL_SEARCH_SCORE_API'
-
-export const FETCH_SCORE = 'FETCH_SCORE'
-export const SUCCESS_FETCH_SCORE_API = 'SUCCESS_FETCH_SCORE_API'
-export const FAIL_FETCH_SCORE_API = 'FAIL_FETCH_SCORE_API'
-
-export const CREATE_SCORE = 'CREATE_SCORE'
-export const SUCCESS_CREATE_SCORE_API = 'SUCCESS_CREATE_SCORE_API'
-export const FAIL_CREATE_SCORE_API = 'FAIL_CREATE_SCORE_API'
-
-export const UPDATE_SCORE = 'UPDATE_SCORE'
-export const SUCCESS_UPDATE_SCORE_API = 'SUCCESS_UPDATE_SCORE_API'
-export const FAIL_UPDATE_SCORE_API = 'FAIL_UPDATE_SCORE_API'
-
-export const CLEAR_STATE = 'CLEAR_STATE'*/
-
 const actionCreator = actionCreatorFactory("saga")
  
 export const fetchStateFromCookiesOperation = actionCreator<void>('FETCH_STATE_FROM_COOKIES_OPERATION')
 
 export const signInOperation = actionCreator<{
     signInData: SignInData;
-    delay: number;
     promise?: {
         resolve(result: { quote: User | null }): void;
         reject(error: string[]): void;
@@ -43,7 +17,6 @@ export const signInOperation = actionCreator<{
 
 export const signUpOperation = actionCreator<{
     signUpData: SignUpData;
-    delay: number;
     promise?: {
         resolve(result: { quote: User | null }): void;
         reject(error: string[]): void;
@@ -51,7 +24,6 @@ export const signUpOperation = actionCreator<{
 }>('SIGN_UP_OPERATION')
 
 export const signOutOperation = actionCreator<{
-    delay: number;
     promise?: {
         resolve(result: { quote: string | null }): void;
         reject(error: string[]): void;
@@ -59,7 +31,6 @@ export const signOutOperation = actionCreator<{
 }>('SIGN_OUT_OPERATION')
 
 export const updateUserOperation = actionCreator<{
-    delay: number;
     updateUserFormData: UpdateUserFormData;
     promise?: {
         resolve(result: { quote: User| null }): void;
@@ -68,7 +39,6 @@ export const updateUserOperation = actionCreator<{
 }>('UPDATE_USER_OPERATION')
 
 export const deleteUserOperation = actionCreator<{
-    delay: number;
     promise?: {
         resolve(result: { quote: string | null }): void;
         reject(error: string[]): void;
@@ -76,7 +46,6 @@ export const deleteUserOperation = actionCreator<{
 }>('DELETE_USER_OPERATION')
 
 export const fetchUserOperation = actionCreator<{
-    delay: number;
     promise?: {
         resolve(result: { quote: User | null }): void;
         reject(error: string[]): void;
@@ -84,7 +53,6 @@ export const fetchUserOperation = actionCreator<{
 }>('FETCH_USER_OPERATION')
 
 export const fetchScoreOperation = actionCreator<{
-    delay: number;
     promise?: {
         resolve(result: { quote: Score | null }): void;
         reject(error: string[]): void;
@@ -92,7 +60,6 @@ export const fetchScoreOperation = actionCreator<{
 }>('FETCH_SCORE_OPERATION')
 
 export const createScoreOperation = actionCreator<{
-    delay: number;
     promise?: {
         resolve(result: { quote: Score | null }): void;
         reject(error: string[]): void;
@@ -101,7 +68,6 @@ export const createScoreOperation = actionCreator<{
 
 export const updateScoreOperation = actionCreator<{
     signInData: SignInData;
-    delay: number;
     promise?: {
         resolve(result: { quote: Score | null }): void;
         reject(error: string[]): void;
@@ -109,7 +75,6 @@ export const updateScoreOperation = actionCreator<{
 }>('UPDATE_SCORE_OPERATION')
 
 export const clearStateOperation = actionCreator<{
-    delay: number;
     promise?: {
         resolve(result: { quote: string | null }): void;
     };
